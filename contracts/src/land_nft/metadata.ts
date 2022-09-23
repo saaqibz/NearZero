@@ -55,22 +55,25 @@ export class TokenMetadata {
     issued_at?: string;
     expires_at?: string;
     starts_at?: string;
-    updated_at?: string;
-    extra?: string;
+    // updated_at?: string; 
+    land_toc?: number; // g per (m^2 * yr)
+    land_size?: number; // m^2
+    // extra?: string;
     reference?: string;
     reference_hash?: string;
 
-    // GIS METADATA
-    // TODO: Can convert most of these to enums after getting enums
+    /* GIS METADATA STORED IN IPFS
     region?: string;
     location?: string; 
-    climate?: string; // called 'weather' in the jupyter data
+    weather?: string; // called 'weather' but actually climate
     sedimentary_env?: string; // Sedimentary environment
     mangrove_species?: string; // comma separated list of species
     condition?: string; // Environmental condition of site
-    toc?: number; // g per (m^2 * yr)
+    toc?: number;
+    size?: number;
     sar?: number; // mm per yr
     source?: string; // source reference for data
+    */
 
     constructor(
         {
@@ -82,20 +85,13 @@ export class TokenMetadata {
             issuedAt, 
             expiresAt, 
             startsAt, 
-            updatedAt, 
-            extra, 
+            // updatedAt, 
             reference, 
             referenceHash,
             // GIS METADATA
-            region,
-            location,
-            climate,
-            sedimentaryEnv,
-            mangroveSpecies,
-            condition,
-            toc,
-            sar,
-            source,
+            landToc,
+            landSize,
+
         }:{
             title?: string, 
             description?: string,
@@ -105,20 +101,12 @@ export class TokenMetadata {
             issuedAt?: string, 
             expiresAt?: string, 
             startsAt?: string, 
-            updatedAt?: string, 
-            extra?: string, 
+            // updatedAt?: string, 
             reference?: string, 
             referenceHash?: string
             // GIS METADATA
-            region?: string
-            location?: string
-            climate?: string
-            sedimentaryEnv?: string
-            mangroveSpecies?: string
-            condition?: string
-            toc?: number
-            sar?: number
-            source?: string
+            landToc?: number
+            landSize?: number
         }) {
             this.title = title; // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
             this.description = description; // free-form description
@@ -128,21 +116,13 @@ export class TokenMetadata {
             this.issued_at = issuedAt; // ISO 8601 datetime when token was issued or minted
             this.expires_at = expiresAt; // ISO 8601 datetime when token expires
             this.starts_at = startsAt; // ISO 8601 datetime when token starts being valid
-            this.updated_at = updatedAt; // ISO 8601 datetime when token was last updated
-            this.extra = extra; // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+            // this.updated_at = updatedAt; // ISO 8601 datetime when token was last updated
             this.reference = reference; // URL to an off-chain JSON file with more info.
             this.reference_hash = referenceHash; // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
 
             // GIS METADATA
-            this.region = region;
-            this.location = location;
-            this.climate = climate;
-            this.sedimentary_env = sedimentaryEnv;
-            this.mangrove_species = mangroveSpecies;
-            this.condition = condition;
-            this.toc = toc; // g per (m^2 * yr) 
-            this.sar = sar; // mm per yr
-            this.source = source;
+            this.land_toc = landToc; // g per (m^2 * yr) 
+            this.land_size = landSize;
         }
 }
 
