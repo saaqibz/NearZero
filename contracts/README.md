@@ -1,3 +1,33 @@
+# Near Zero
+
+## Deploy
+
+- set env vars:
+export NEARID=nearzero.testnet
+export NFT_STORAGE_API_KEY=<...>
+export NFT_CONTRACT_ID=landnft_nearzero.testnet
+
+- Login: `near login`
+
+- deploy contract to testnet
+`near deploy --wasmFile build/nft.wasm --accountId $NFT_CONTRACT_ID`
+
+- Initialize contract constructor
+`near call $NFT_CONTRACT_ID init '{"owner_id": "nearzero.testnet"}' --accountId $NFT_CONTRACT_ID`
+
+- mint:
+
+```
+near call landnft_nearzero.testnet nft_mint \
+'{"token_id": "108fa8a6-79ec-46f7-93ad-80cc3cf32d44", "receiver_id": "'$NEARID'", "metadata": { "title": "TEST-80cc3cf32d44", "description": "test land creation", "media": "https://bafkreihdakgwl2lxgwejyrcvdzeyhtxex7tspfabngamyj3vbznyu2snjm.ipfs.nftstorage.link/","reference":"https://bafkreif42cev2756d3n7hghekifzlb2fanhoc4amescbjawd3lcmfqelae.ipfs.nftstorage.link/","land_toc":36,"land_size":100, "copies": 1}}' \
+--accountId $NEARID --deposit 0.1
+```
+
+
+---
+
+# NFT-TUTORIAL DETAILS
+
 # NEAR NFT-Tutorial JavaScript Edition
 
 Welcome to NEAR's NFT tutorial, where we will help you parse the details around NEAR's [NEP-171 standard](https://nomicon.io/Standards/NonFungibleToken/Core.html) (Non-Fungible Token Standard), and show you how to build your own NFT smart contract from the ground up, improving your understanding about the NFT standard along the way. 

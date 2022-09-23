@@ -6,17 +6,18 @@
   "type": "module",
   "scripts": {
     "build": "yarn build:nft && yarn build:market",
-    "build:nft": "near-sdk-js build src/nft-contract/index.ts build/nft.wasm",
+    "build:nft": "near-sdk-js build src/land_nft/index.ts build/nft.wasm",
     "build:market": "near-sdk-js build src/market-contract/index.ts build/market.wasm",
     "test": "ava"
   },
-  "author": "Near Inc <hello@nearprotocol.com>",
+  "author": "S. Alexander Zaman <saz@Sazbook.local>",
   "license": "Apache-2.0",
   "dependencies": {
-    "near-sdk-js": "0.4.0-5",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "near-sdk-js": "0.4.0-5"
   },
   "devDependencies": {
+    "near-cli": "^3.4.2",
     "typescript": "^4.7.4"
   }
 }

@@ -1,12 +1,11 @@
 
-import { NearContract, NearBindgen, near, call, view, LookupMap, UnorderedMap, Vector, UnorderedSet } from 'near-sdk-js'
+import { assert, NearContract, NearBindgen, near, call, view, LookupMap, UnorderedMap, Vector, UnorderedSet } from 'near-sdk-js'
 import { NFTContractMetadata, Token, TokenMetadata, internalNftMetadata } from './metadata';
 import { internalMint } from './mint';
 import { internalNftTokens, internalSupplyForOwner, internalTokensForOwner, internalTotalSupply } from './enumeration';
 import { internalNftToken, internalNftTransfer, internalNftTransferCall, internalResolveTransfer } from './nft_core';
 import { internalNftApprove, internalNftIsApproved, internalNftRevoke, internalNftRevokeAll } from './approval';
 import { internalNftPayout, internalNftTransferPayout } from './royalty';
-import { assert } from 'console';
 
 /// This spec can be treated like a version of the standard.
 export const NFT_METADATA_SPEC = "nft-1.0.0";
@@ -53,7 +52,7 @@ export class Contract extends NearContract {
     */
     @call
     nft_mint({ token_id, metadata, receiver_id, perpetual_royalties }) {
-        assert(!perpetual_royalties) // royalties are not supported
+        assert(!perpetual_royalties, "royalties are not supported")
 
         return internalMint({ contract: this, tokenId: token_id, metadata: metadata, receiverId: receiver_id, perpetualRoyalties: perpetual_royalties });
     }

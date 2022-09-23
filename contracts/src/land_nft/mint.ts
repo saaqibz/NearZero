@@ -20,8 +20,8 @@ export function internalMint({
     //measure the initial storage being used on the contract TODO
     let initialStorageUsage = near.storageUsage();
 
-    // // create a royalty map to store in the token
-    // let royalty: { [accountId: string]: number } = {}
+    // create a royalty map to store in the token
+    let royalty: { [accountId: string]: number } = {}
 
     // // if perpetual royalties were passed into the function: TODO: add isUndefined fn
     // if (perpetualRoyalties != null) {
@@ -43,8 +43,7 @@ export function internalMint({
         //the next approval ID is set to 0
         nextApprovalId: 0,
         // //the map of perpetual royalties for the token (The owner will get 100% - total perpetual royalties)
-        // royalty,
-        null,
+        royalty,
     });
 
     //insert the token ID and token struct and make sure that the token doesn't exist
