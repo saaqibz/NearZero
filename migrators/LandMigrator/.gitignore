@@ -1,0 +1,9 @@
+#venv
+/bin
+/include
+/lib
+pyvenv.cfg
+
+# Jupyter
+/migrators/LandMigrator/share/
+/migrators/LandMigrator/src/.ipynb_checkpoints/
